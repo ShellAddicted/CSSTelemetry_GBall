@@ -1,0 +1,39 @@
+/*Copyright (c) 2018 ShellAddicted <ShellAddicted@gmail.com> - MIT License*/
+.csstelemetry-gball {
+  position: relative;
+  border-radius: 50%;
+  background: black;
+  border: 1px solid white;
+  color: #ffff;
+  font-size: 100%;
+  text-align: center;
+}
+
+.csstelemetry-center {
+	margin: 0 auto;
+}
+
+.csstelemetry-right {
+	margin: auto 0 0 auto;
+}
+
+.csstelemetry-left {
+	margin: 0 auto auto 0;
+}
+
+.csstelemetry-gball-cursor{
+  position: absolute;
+  border-radius: 50%;
+  background: red;
+  top: 50%;
+  left: 50%;
+  z-index: 9999999;
+  transition: 500ms;
+}
+
+.csstelemetry-gball-rect{
+  position: absolute;
+  background: transparent;
+  top: 50%;
+  left: 50%;
+}
