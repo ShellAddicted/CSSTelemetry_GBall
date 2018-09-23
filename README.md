@@ -1,5 +1,5 @@
 # CSSTelemetry | GBall
- A G-Force visualizer inspired by MotoGP telemtetry graphics
+ A G-Force visualizer inspired by MotoGP telemetry
 
 ![screenshot](https://github.com/ShellAddicted/CSSTelemetry_GBall/blob/master/screenshot.jpg)
 
