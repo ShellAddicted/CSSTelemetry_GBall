@@ -25,7 +25,7 @@ ball = new GBall("ball1",4,8);
 // show a Force -> G values (x,y)
 ball.showForce(2,1); // 2g (x) ; 1g(y)
 //Alternative:
-ball.showForce(ms2tog(12,13)) //12m/s² (x) ; 13mm/s² (y)
+ball.showForce(ms2tog(12),ms2tog(13))) //12m/s² (x) ; 13mm/s² (y)
 ```
 
 ## DEMO
