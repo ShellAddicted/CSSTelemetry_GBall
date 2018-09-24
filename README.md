@@ -1,5 +1,5 @@
 # CSSTelemetry | GBall
- A G-Force visualizer inspired by MotoGP telemetry
+ A G-Force visualizer inspired by MotoGP telemetry, powered by CSS and JS
 
 ![screenshot](https://github.com/ShellAddicted/CSSTelemetry_GBall/blob/master/screenshot.jpg)
 
@@ -7,6 +7,7 @@
 # Quickstart
 HTML:
 ```html
+<link rel="stylesheet" type="text/css" href="csstelemetry-gball.css" />
 <div id="ball1" class="csstelemetry-gball"style="height: 300px; width: 300px;"></div>
 <script src="js/csstelemetry-gball.js"></script>
 ```
