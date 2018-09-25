@@ -28,7 +28,6 @@
   top: 50%;
   left: 50%;
   z-index: 9999999;
-  transition: 500ms;
 }
 
 .csstelemetry-gball-rect{
