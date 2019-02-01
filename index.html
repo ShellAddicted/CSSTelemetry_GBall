@@ -7,14 +7,17 @@
 	<title>G Ball | DEMO</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
+		/*DEMO CSS*/
 		html {
 			background: #212121;
 			text-align: center;
 			color: #fff;
-
 		}
 	</style>
-	<link rel="stylesheet" href="css/csstelemetry-gball.css">
+	<!--
+		<link rel="stylesheet" href="css/csstelemetry-gball.css">
+	-->
+	<link rel="stylesheet" href="dist/csstelemetry-gball.min.css">
 	<style type="text/css">
 		/* use this rules to define your custom style Example:
 		.csstelemetry-gball{
@@ -38,18 +41,76 @@
 		 alt="Fork me on GitHub" />
 	</a>
 	<h1>CSS Telemetry | G Ball</h1>
-	<div id="ball1" class="csstelemetry-gball csstelemetry-center" style="height: 300px; width: 300px;"></div>
+	<div id="ball1" class="csstelemetry-gball csstelemetry-center" style="height: 400px; width: 400px;"></div>
+	<div class="info-area">
+		<h3>Constants</h3>
+		<div id="constants">
+			<span>1 G: <span id="gvalue"></span> m/s²</span><br />
+			<span>1 m/s²: <span id="ms2value"></span> G</span>
+		</div>
+		<h3>Force</h3>
+		<div id="force">
+			<span>X: <span id="xaxisms2">0</span> m/s² (<span id="xaxisg">0</span> G</span>)<br>
+			<span>Y: <span id="yaxisms2">0</span> m/s² (<span id="yaxisg">0</span> G</span>)
+		</div>
+		<div id="showforce">
+			<h3>Show a Force (unit: m/s²)</h3>
+			<input id="xvaluems2" type="number" placeholder="X m/s²" />
+			<input id="yvaluems2" type="number" placeholder="Y m/s²" />
+			<input id="showForceBtn" type="button" value="apply" />
+		</div>
 
+
+	</div>
+
+	<!--
 	<script src="./js/csstelemetry-gball.js"></script>
+	-->
+	<script src="./dist/csstelemetry-gball.min.js"></script>
 	<script type="text/javascript">
-		ball = new GBall("ball1",4,1);
-		/*ball.showForce(2,1); // 2g (x) ; 1g(y)*/
-		/*ball.showForce(ms2tog(12,13)) //12m/s² (x) ; 13mm/s² (y)*/
+		document.getElementById("gvalue").innerHTML = G.toFixed(5);
+		document.getElementById("ms2value").innerHTML = (1 / G).toFixed(5);
+		/*
+			GBall(DOMElement, cursorSize = 4, maxGValue = 8, steps = 4, dashed = true)
+	
+			DOMElement: DOM Element reserved for GBall
+			cursorSize: (int)size of force indicator
+			maxGValue: (float)maximum representable value
+			steps: (int) number of steps between -maxGValue && +maxGValue (more steps =
+			more resolution) dashed: (bool) alternates solid circle and dashed circles
+		*/
+		ball = new GBall(document.getElementById("ball1"), 4, 2, 5, true);
+		/*
+			showForce(xAxis, yAxis)
+
+			xAxis: (float) force along xAxis (unit: G)
+			yAxis: (float) force along yAxis (unit: G)
+
+			Examples:
+				ball.showForce(2,1); // 2g (x) ; 1g(y)
+				ball.showForce(ms2tog(12), ms2tog(13)) //12m/s² (x) ; 13mm/s² (y)
+		*/
+		ball.showForce(0, 0);
+
+		document.getElementById("showForceBtn").onclick = (evt) => {
+			let xforcems2 = parseFloat(document.getElementById("xvaluems2").value);
+			let yforcems2 = parseFloat(document.getElementById("yvaluems2").value);
+			let xforceg = ms2tog(parseFloat(document.getElementById("xvaluems2").value));
+			let yforceg = ms2tog(parseFloat(document.getElementById("yvaluems2").value));
+			document.getElementById("xaxisms2").innerHTML = xforcems2.toFixed(5);
+			document.getElementById("yaxisms2").innerHTML = yforcems2.toFixed(5);
+			document.getElementById("xaxisg").innerHTML = xforceg.toFixed(5);
+			document.getElementById("yaxisg").innerHTML = yforceg.toFixed(5);
+			ball.showForce(xforceg, yforceg);
+		}
+		/*
+		//if your device/browser supports DeviceMotion API enable the following lines, and shake yor device.
 		if (window.DeviceMotionEvent != undefined) {
 			window.ondevicemotion = (e) => {
 				ball.showForce(ms2tog(e.acceleration.x), ms2tog(e.acceleration.y));
 			}
 		}
+		*/
 	</script>
 </body>
 
